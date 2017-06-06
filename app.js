@@ -97,5 +97,10 @@ app.listen(8002, function(){
   console.log('listening on port 8002')
 })
 
+//favorit_animals
+app.get('/form', function(request, response){
+  response.render('form.hbs', {title:})
+})
+
 
 //
