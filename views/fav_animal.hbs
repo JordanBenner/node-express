@@ -1,9 +1,9 @@
 {{{content}}}
-<!-- {{{animals}}} -->
+
 <ul>
-{{#each}}
-<li>
-  <!-- {{#if}} - {{animals}} - {{favorite}} - {{/if}}
-</li> -->
+{{#each animals}}
+{{#if favorite}}
+<li>{{name}}</li>
+{{/if}}
 {{/each}}
 </ul>
