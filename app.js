@@ -2,12 +2,18 @@
 // add everytime u install new packages
 var express = require('express');
 var app = express();
-var body_parser = require('body-parser')
+var body_parser = require('body-parser');
+var promise = require('bluebird');
+var pgp = require('pg-promise')({
+  promiseLib: promise
+});
+
+var db = pgp({database: 'restaurant'});
 // end packages
 
 //type app.use to turn on packages
 app.set ('view engine', 'hbs');
-app.use(body)parser.urlencoded({edtended: false}));
+app.use(body_parser.urlencoded({extended: false}));
 app.use('/static', express.static('public'))
 
 app.get('/cats', function (request, response){
@@ -97,26 +103,33 @@ app.get('/hello', function (request, response) {
   response.render('hello.hbs',  context);
 });
 //favorit_animals
-// app.get('/form', function(request, response){
-//   response.render('form.hbs', {title:})
-// });
+app.get('/form', function(request, response){
+   response.render('form.hbs', {title: 'hello'})
+});
 
 // forms
-app.post('/submit', function (request, response){
-  console.log(request.body);
-  response.send('ok');
-})
-
 //redirect
 app.post('/submit', function (request, response){
   console.log(request.body);
   response.redirect('/thank-you');
-})
+});
 
 app.get('/thank-you', function (request, response){
+  response.send('thanks');
+});
+//search
 
-})
-
+app.get('/search', function(req, resp, next) {
+  let term = req.query.searchTerm;
+  let query = "SELECT * FROM restaurant WHERE restaurant.name ILIKE '%$1#%'";
+  db.any(query, term)
+    .then(function(resultsArray) {
+      resp.render('search.hbs', {
+        results: resultsArray
+      });
+    })
+    .catch(next);
+});
 app.listen(8002, function(){
   console.log('listening on port 8002')
 })
