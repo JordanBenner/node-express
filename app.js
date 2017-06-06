@@ -82,13 +82,13 @@ var animals = [
   { name: 'guinea pigs', favorite: true },
 ];
 
-// app.get('/fav_animals', function (request, response) {
-//   var context = {
-//     title: ' world',
-//   }
-// };
-// response.render('favorit_animals.hbs',  context);
-// });
+app.get('/fav_animals', function (request, response) {
+  var context = {
+    title: 'world',
+  }
+};
+response.render('favorit_animals.hbs',  context);
+});
 
 //Lecture get query params
 
