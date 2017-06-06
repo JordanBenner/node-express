@@ -7,15 +7,15 @@ app.set ('view engine', 'hbs');
 app.use('/static', express.static('public'))
 
 app.get('/cats', function (request, response){
-  response.send('cats')
+  response.send('Meow')
 });
 
 app.get('/dogs', function (request, response){
-  response.send('dogs')
+  response.send('Woof')
 });
 
 app.get('/cats_and_dogs', function (request, response){
-  response.send('Cats and Dogs')
+  response.send('Living together')
 });
 
 
@@ -41,10 +41,13 @@ app.get('/greet/Kennedy:slug', function (request, response) {
 
 app.get('/hello', function (request, response) {
   var name = request.query.name || 'world';
-  var context = {title: 'Hello', name: name,};
-  image:'/static/catdog.jpg'
-  friends:[{name:'john', age: 21},{name: 'joan', age: 32}]
-  // response.render('hello.hbs',  context);
+  var context = {
+    title: 'Hello',
+    name: name,
+    image:'/static/catdog.jpg',
+    friends:[{name:'john', age: 21},{name: 'joan', age: 32}]
+  };
+  response.render('hello.hbs',  context);
 });
 
 app.listen(8002, function(){
