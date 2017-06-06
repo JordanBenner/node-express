@@ -39,17 +39,46 @@ app.get('/greet/Kennedy:slug', function (request, response) {
 
 //templates
 app.get('/greet', function (request, response) {
-  var name = request.query.name || 'world';
+  var name = request.query.name || 'Manoush!';
   var html_content='<p>You were born in 1985.</p>';
   var context = {
     title: 'Manoush!',
+    content: html_content,
     name: name,
     image:'/static/catdog.jpg',
     friends:[{name:'Manoush', age: 32}]
   };
   response.render('hello.hbs',  context);
 });
+// query params
+app.get('/year', function (request, response) {
+  var year = 2017 - age;
+  var age = 32
+  var html_content='<p>You were born in 1985.</p>';
+  var context = {
+    title: 'Manoush!',
+    content: html_content,
+    age: 32
+  };
+  response.render('year.hbs',  context);
+});
 
+// templates 2
+var animals = [
+  { name: 'cats', favorite: true },
+  { name: 'dogs', favorite: true },
+  { name: 'tree frogs', favorite: true },
+  { name: 'earth worms', favorite: false },
+  { name: 'guinea pigs', favorite: true },
+];
+
+app.get('/fav_animals', function (request, response) {
+  var context = {
+    title: ' world',
+  }
+};
+response.render('favorit_animals.hbs',  context);
+});
 
 //Lecture get query params
 
