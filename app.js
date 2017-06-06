@@ -85,9 +85,11 @@ var animals = [
 app.get('/fav_animals', function (request, response) {
   var context = {
     title: 'world',
+    favorite: favorite,
+    
   }
 };
-response.render('favorit_animals.hbs',  context);
+response.render('favorit_animal.hbs',  context);
 });
 
 //Lecture get query params
