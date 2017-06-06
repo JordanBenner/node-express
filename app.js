@@ -5,7 +5,9 @@ var app = express();
 var body_parser = require('body-parser')
 // end packages
 
+//type app.use to turn on packages
 app.set ('view engine', 'hbs');
+app.use(body)parser.urlencoded({edtended: false}));
 app.use('/static', express.static('public'))
 
 app.get('/cats', function (request, response){
@@ -94,15 +96,32 @@ app.get('/hello', function (request, response) {
   };
   response.render('hello.hbs',  context);
 });
+//favorit_animals
+// app.get('/form', function(request, response){
+//   response.render('form.hbs', {title:})
+// });
+
+// forms
+app.post('/submit', function (request, response){
+  console.log(request.body);
+  response.send('ok');
+})
+
+//redirect
+app.post('/submit', function (request, response){
+  console.log(request.body);
+  response.redirect('/thank-you');
+})
+
+app.get('/thank-you', function (request, response){
+
+})
 
 app.listen(8002, function(){
   console.log('listening on port 8002')
 })
 
-//favorit_animals
-app.get('/form', function(request, response){
-  response.render('form.hbs', {title:})
-})
+
 
 
 //
