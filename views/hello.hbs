@@ -1,0 +1,19 @@
+<!DOCTYPE>
+<html>
+<head>
+  <title>{{title}}</title>
+</head>
+<body>
+  <h1>{{title}} {{name}}</h1>
+  <ul>
+  <!-- for loop -->
+    {{#each friends}}
+    <li>{{name}} - {{age}}</li>
+    <!-- if statement -->
+    {{#if age}}
+    - you are {{age}}
+    {{/each}}
+    <!-- end for loop -->
+  </ul>
+</body>
+</html>
