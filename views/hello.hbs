@@ -3,10 +3,13 @@
   <ul>
   <!-- for loop -->
     {{#each friends}}
-    <li>{{name}} - {{age}}</li>
+    <li>{{name}} - {{age}} - {{year}}</li>
     <!-- if statement -->
     {{#if age}}
     - you are {{age}}
+    {{/if}}
+    {{#if age}}
+    - You were born in {{year}}
     {{/if}}
     {{/each}}
     <!-- end for loop -->

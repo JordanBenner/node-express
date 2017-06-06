@@ -37,7 +37,21 @@ app.get('/greet/Kennedy:slug', function (request, response) {
   response.send('Hello, Kennedy!: ' + slug);
 });
 
-//get query params
+//templates
+app.get('/greet', function (request, response) {
+  var name = request.query.name || 'world';
+  var html_content='<p>You were born in 1985.</p>';
+  var context = {
+    title: 'Manoush!',
+    name: name,
+    image:'/static/catdog.jpg',
+    friends:[{name:'Manoush', age: 32}]
+  };
+  response.render('hello.hbs',  context);
+});
+
+
+//Lecture get query params
 
 app.get('/hello', function (request, response) {
   var name = request.query.name || 'world';
