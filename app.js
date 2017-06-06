@@ -1,7 +1,9 @@
 // problem 1
-
+// add everytime u install new packages
 var express = require('express');
 var app = express();
+var body_parser = require('body-parser')
+// end packages
 
 app.set ('view engine', 'hbs');
 app.use('/static', express.static('public'))
